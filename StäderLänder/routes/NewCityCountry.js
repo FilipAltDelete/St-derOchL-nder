@@ -63,31 +63,8 @@ app.post("/", function (request, response) {
         if (err) throw err;
       });
     });
-    //res.send("Success!!!");
   });
 });
 
 app.listen(3000);
 module.exports = app;
-
-/*
-router.get("/", function (req, res, next) {
-  fs.readFile("users.json", (err, data) => {
-    if (err) throw err;
-    var users = JSON.parse(data);
-    newUser = {
-      id: 4,
-      userName: "Pelle Pung",
-      userMail: "Pelle@pornhub.com",
-    };
-
-    users.push(newUser);
-
-    var saveUsers = JSON.stringify(users, null, 2);
-    fs.writeFile("users.json", saveUsers, (err, data) => {
-      if (err) throw err;
-    });
-    res.send("ny användare sparad");
-  });
-});
-*/
