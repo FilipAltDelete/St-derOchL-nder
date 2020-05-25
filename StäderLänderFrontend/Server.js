@@ -34,9 +34,27 @@ function buildList(data) {
   var secondDiv = document.createElement("div");
   secondDiv.className = "buttonDivVisited";
   secondDiv.innerHTML =
-    "</button><br><button class='button2' id='visitedButton' onclick='showVisitedCities()'>VisitedCities</button>";
+    "</button><br><button class='button2' id='visitedButton' onclick='showVisitedCities()'>VisitedCities</button>" +
+    "<br><br><button class='button2' id='addButton' onclick='addNewCountry()'>NewCountry</button>";
   var secondContainerDiv = document.getElementById("MainPage");
   secondContainerDiv.appendChild(secondDiv);
+}
+
+function addNewCountry() {
+  document.getElementById("MainPage").innerHTML = "";
+  document.getElementById("headerText").innerHTML = "Add Country";
+  var newDiv = document.createElement("div");
+  newDiv.className = "addNewCity";
+  newDiv.innerHTML =
+    "New Country:<br><input type='text' id='newCountry'></input><br>New City:<br><input type='text' id='newCity'></input><br>Population: <br><input type='text' id='newPop'></input><br><button id='submitNew' onclick='postNewCountry'>Submit</button></input>";
+  var containerDiv = document.getElementById("MainPage");
+  containerDiv.appendChild(newDiv);
+}
+
+function postNewCountry() {
+  var newCountry = document.getElementById("newCountry").value;
+  var newCity = document.getElementById("newCity").value;
+  var newPop = document.getElementById("newPop").value;
 }
 
 function showVisitedCities() {
