@@ -46,7 +46,7 @@ function addNewCountry() {
   var newDiv = document.createElement("div");
   newDiv.className = "addNewCity";
   newDiv.innerHTML =
-    "New Country:<br><input type='text' id='newCountry'></input><br>New City:<br><input type='text' id='newCity'></input><br>Population: <br><input type='text' id='newPop'></input><br><button id='submitNew' onclick='postNewCountry'>Submit</button></input>";
+    "New Country:<br><input type='text' id='newCountry'></input><br>New City:<br><input type='text' id='newCity'></input><br>Population: <br><input type='number' id='newPop'></input><br><button id='submitNew' onclick='postNewCountry()'>Submit</button></input>";
   var containerDiv = document.getElementById("MainPage");
   containerDiv.appendChild(newDiv);
 }
@@ -55,6 +55,14 @@ function postNewCountry() {
   var newCountry = document.getElementById("newCountry").value;
   var newCity = document.getElementById("newCity").value;
   var newPop = document.getElementById("newPop").value;
+  data = { Country: newCountry, city: newCity, population: newPop };
+  fetch("http://localhost:5002/NewCityCountry", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  }).then((response) => response.json());
 }
 
 function showVisitedCities() {
